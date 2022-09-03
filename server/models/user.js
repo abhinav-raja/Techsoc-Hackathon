@@ -10,10 +10,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    hostel: {
+    /*hostel: {
         type: String,
         required: true
-    },
+    },*/
     //role controls the access level of the user
     role: {
         type: String,
@@ -22,4 +22,10 @@ const userSchema = new mongoose.Schema({
         //Admin can view and update status of all complaints
         enum: ['Student', 'Warden', 'Admin']
     },
+    accessToken: {
+        type: String,
+    }
 });
+
+const User = mongoose.model('user', userSchema);
+module.exports = User;

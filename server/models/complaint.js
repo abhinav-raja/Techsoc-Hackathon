@@ -26,3 +26,6 @@ const complaintSchema = new mongoose.Schema({
         enum: ['Open', 'In Progress', 'Resolved']
     }
 })
+
+const Complaint = mongoose.model('complaint', complaintSchema);
+module.exports = Complaint;

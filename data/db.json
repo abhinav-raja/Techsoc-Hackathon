@@ -1,0 +1,19 @@
+{
+  "complaints": [
+    {
+      "title": "complaint1",
+      "body": "body of complaint1",
+      "id": 1
+    },
+    {
+      "title": "complaint2",
+      "body": "body of complaint2",
+      "id": 3
+    },
+    {
+      "title": "complaint3",
+      "body": "body of complaint3",
+      "id": 3
+    }
+  ]
+}

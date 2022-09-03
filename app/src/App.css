@@ -1,3 +1,23 @@
+@import "antd/dist/antd.css";
+
+.background {
+  background-color: darkblue;
+}
+.error {
+  margin-top: 100px;
+}
+.imgtexterror {
+  display: flex;
+  flex-wrap: wrap;
+}
+.navbar {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  border-bottom: 1px solid #d3d3d3;
+}
+
 .App {
   text-align: center;
 }

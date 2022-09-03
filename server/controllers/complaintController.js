@@ -13,7 +13,7 @@ Get prev complaints of user
 -Add complaint
 */
 
-exports.addCompaint = async(req, res, next) => {
+exports.addComplaint = async(req, res, next) => {
     try {
         const {text, complainant, hostel} = req.body;
         const newComplaint = new Complaint({

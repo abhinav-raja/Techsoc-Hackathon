@@ -1,10 +1,11 @@
 const User = require('../models/user.js');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const {roles} = require('roles');
+const roles = require('../roles.js');
 
 async function hashPassword(pwd){
-    return await bcrypt.hash(pwd, 10);
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(pwd, salt);
 }
 
 async function validatePassword(pwd, hash){
@@ -15,6 +16,7 @@ async function validatePassword(pwd, hash){
 exports.signup = async(req, res, next)=>{
     try{
         const {email, password, role} = req.body;
+        console.log(req.params, req.body);
         const hashedPassword = await hashPassword(password);
         const newUser = new User({
             email,
@@ -41,6 +43,7 @@ exports.signup = async(req, res, next)=>{
 exports.login = async(req, res, next)=>{
     try {
         const {email, password} = req.body;
+        console.log(req.body);
         const user = await User.findOne({email});
         if(!user){
             return next(new Error('Email not found in records'));
@@ -120,8 +123,8 @@ exports.deleteUser = async(req, res, next) => {
 exports.grantAccess = function(resource){
     return async (req, res, next) => {
         try {
-            const permission = roles.can(req.user)(resource);
-            if(!permission.granted){
+            const permission = roles.can(res.locals.loggedInUser)(resource);
+            if(!permission){
                 return res.status(401).json({
                     error: 'You don\'t have permission to perform this action'
                 });
@@ -136,6 +139,7 @@ exports.grantAccess = function(resource){
 exports.allowIfLoggedIn = async(req, res, next) => {
     try{
         const user = res.locals.loggedInUser;
+      console.log(res.locals);
         if(!user){
             return res.status(401).json({
                 error: "You need to be logged in to view this page"

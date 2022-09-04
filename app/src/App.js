@@ -4,8 +4,9 @@ import Login from "./views/Login";
 import React from "react";
 import AddComplaint from "./views/AddComplaint";
 import Register from "./views/Register";
-import ViewComplaints from "./views/ViewComplaints";
 import Error from "./views/Error";
+import Dashboard from "./views/Dashboard";
+import ComplaintDetails from "./views/ComplaintDetails";
 
 function App() {
   return (
@@ -20,8 +21,11 @@ function App() {
         <Route path="/addcomplaint">
           <AddComplaint />
         </Route>
-        <Route path="/dashboard">
-          <ViewComplaints />
+        <Route exact path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/complaints/:id">
+          <ComplaintDetails />
         </Route>
         <Route path="*">
           <Error />

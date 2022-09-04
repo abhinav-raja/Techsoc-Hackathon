@@ -1,9 +1,29 @@
 import { Card, Form, Input, Typography, Button, Select } from "antd";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import HeaderHostel from "../common/HeaderHostel";
 
 const AddComplaint = () => {
   const onFinish = (values) => {
     console.log(values);
+  };
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [isPending, setIsPending] = useState(false);
+  const history = useHistory();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const complaint = { title, body };
+    console.log(complaint);
+    setIsPending(true);
+    fetch("http://localhost:8000/complaints", {
+      method: "POST",
+      header: { "Content-Type": "application/json" },
+    }).then(() => {
+      console.log("something");
+      setIsPending(false);
+      history.push("/dashboard");
+    });
   };
   const { Option } = Select;
 
@@ -25,9 +45,12 @@ const AddComplaint = () => {
             </center>
           }
         >
-          <Form onFinish={onFinish}>
+          <Form>
             <Form.Item label="Hostel:" rules={[{ required: true }]}>
-              <Select defaultValue="Alakananda">
+              <Select
+                defaultValue="Alakananda"
+                onChange={(e) => setTitle(e.target.value)}
+              >
                 <Option value="Alakananda">Alakananda</Option>
                 <Option value="Brahmaputra">Brahmaputra</Option>
                 <Option value="Cauvery">Cauvery</Option>
@@ -52,10 +75,10 @@ const AddComplaint = () => {
               </Select>
             </Form.Item>
             <Form.Item label="Complaint:" rules={[{ required: true }]}>
-              <Input.TextArea />
+              <Input.TextArea onChange={(e) => setBody(e.target.value)} />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" size="large" onClick={handleSubmit}>
                 Submit
               </Button>
             </Form.Item>

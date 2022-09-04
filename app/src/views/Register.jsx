@@ -3,23 +3,23 @@ import { Form, Input, Button, Col, Card, Typography } from "antd";
 import HeaderHostel from "../common/HeaderHostel";
 
 const Register = () => {
-  const [form] = useForm();
+  const [form] = Form.useForm();
   //Api url
   const api = "";
-  const createUser = ()=>{
+  const createUser = () => {
     const content = {
       //email: this.formRef.current.getFieldValue,
       password: "",
-      role: ""
+      role: "",
     };
     console.log(form.getFieldsValue());
     const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(content)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(content),
     };
-    fetch(api, requestOptions)
-  }
+    fetch(api, requestOptions);
+  };
 
   return (
     <>
@@ -55,7 +55,7 @@ const Register = () => {
               <Input.Password placeholder="Create new password" />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" size="large" onClick = {createUser()}>
+              <Button type="primary" size="large" onClick={createUser()}>
                 Register
               </Button>
             </Form.Item>

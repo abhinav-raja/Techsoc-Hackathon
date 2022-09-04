@@ -4,7 +4,7 @@
   background-color: darkblue;
 }
 .error {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 .imgtexterror {
   display: flex;
@@ -16,6 +16,16 @@
   align-items: center;
   margin: 0 auto;
   border-bottom: 1px solid #d3d3d3;
+}
+.dashboard {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+  align-items: center;
+  max-width: 900px;
+}
+.dashboard:hover {
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .App {

@@ -1,28 +1,24 @@
 import { Button } from "antd";
 import HeaderHostel from "../common/HeaderHostel";
-import image from "./image/gc-modified.png";
+import img404 from "./image/error404.jpg";
+import { Link } from "react-router-dom";
 
 const Error = () => {
   return (
     <>
       <HeaderHostel />
       <div className="error">
-        <div className="imgtexterror">
-          <center>
-            <h1 style={{ fontsize: "200px" }}>4</h1>
-          </center>
-          <img
-            src={image}
-            style={{ height: "200px", width: "200px", align: "center" }}
-            alt="gajendra circle"
-          />
-        </div>
         <center>
+          <img src={img404} alt="gajendra circle" style={{ height: "200px" }} />
+          <br />
+          <br />
+          <br />
+          <br />
           <h1>Oops, sorry</h1>
-          <h2>This page was not found, </h2>
-          {/* just like the third elephant. */}
+          <h2>Can't seem to find the third elephant :/</h2>
+          <br />
           <Button type="primary" size="large">
-            Home
+            <Link to="/dashboard">Back to the Dashboard</Link>
           </Button>
         </center>
       </div>

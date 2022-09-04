@@ -29,9 +29,7 @@ const ComplaintDetails = () => {
             boxShadow: "2px 2px #D3D3D3",
           }}
         >
-          {isPending && (
-            <div style={{ margin: "100px", size: "10px" }}>Loading...</div>
-          )}
+          {isPending && <div>Loading...</div>}
           {error && <div>{error}</div>}
           {complaint && (
             <article>

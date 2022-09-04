@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Col, Card, Typography } from "antd";
 import HeaderHostel from "../common/HeaderHostel";
+import FooterHostel from "../common/FooterHostel";
 
 const Register = () => {
   const [form] = Form.useForm();
@@ -62,6 +63,7 @@ const Register = () => {
           </Form>
         </Card>
       </center>
+      <FooterHostel />
     </>
   );
 };

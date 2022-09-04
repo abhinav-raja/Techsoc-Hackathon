@@ -2,7 +2,9 @@ import React from "react";
 
 const FooterHostel = () => {
   return (
-    <footer style={{ lineHeight: "30px", marginTop: "170px" }}>
+    <footer
+      style={{ lineHeight: "30px", marginTop: "200px", marginLeft: "10px" }}
+    >
       <div>
         &copy;Developed by <strong>ElopeDev</strong> | Web Operations | IIT
         Madras. <br />

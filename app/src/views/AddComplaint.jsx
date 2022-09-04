@@ -2,15 +2,17 @@ import { Card, Form, Input, Typography, Button, Select } from "antd";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import HeaderHostel from "../common/HeaderHostel";
+import React from "react";
 
 const AddComplaint = () => {
   const onFinish = (values) => {
     console.log(values);
   };
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("Alakananda");
   const [body, setBody] = useState("");
   const [isPending, setIsPending] = useState(false);
   const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const complaint = { title, body };
@@ -19,6 +21,7 @@ const AddComplaint = () => {
     fetch("http://localhost:8000/complaints", {
       method: "POST",
       header: { "Content-Type": "application/json" },
+      body: JSON.stringify(complaint),
     }).then(() => {
       console.log("something");
       setIsPending(false);
@@ -35,7 +38,7 @@ const AddComplaint = () => {
           style={{
             width: "700px",
             marginTop: "80px",
-            boxShadow: "5px 5px #D3D3D3",
+            boxShadow: "2px 2px #D3D3D3",
           }}
           title={
             <center>
